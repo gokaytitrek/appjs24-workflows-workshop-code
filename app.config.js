@@ -1,4 +1,5 @@
-const IS_DEV = process.env.APP_VARIANT === "development";
+// const IS_DEV = process.env.APP_VARIANT === "development";
+const IS_DEV = "development";
 
 export default {
   expo: {
@@ -31,7 +32,23 @@ export default {
       bundler: "metro",
       favicon: "./assets/images/favicon.png",
     },
-    plugins: [["expo-router"]],
+    plugins: [
+      ["expo-router"],
+      [
+        "expo-quick-actions",
+        {
+          androidIcons: {
+            fav_icon: {
+              foregroundImage: "./assets/images/adaptive-icon-fav.png",
+              backgroundColor: "#29cfc1",
+            },
+          },
+          iosIcons: {
+            fav_icon: "./assets/images/fav.png",
+          },
+        },
+      ],
+    ],
     experiments: {
       typedRoutes: true,
     },

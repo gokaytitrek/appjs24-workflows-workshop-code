@@ -922,14 +922,6 @@
     },
     {
       "type": "file",
-      "filePath": "node_modules/ms/index.js",
-      "reasons": [
-        "expoConfigPlugins"
-      ],
-      "hash": "55f9b3a7d4cfbf68b19ccd0d698aa86483dd4694"
-    },
-    {
-      "type": "file",
       "filePath": "node_modules/p-limit/index.js",
       "reasons": [
         "expoConfigPlugins"
@@ -1540,5 +1532,5 @@
       "hash": "3e4a32f987d2e19e415867d819d44a5cb92c7a25"
     }
   ],
-  "hash": "ead3ad6508a8668fb618f5b1c931fc11bf1f4155"
+  "hash": "a994ba3226923d5348a4ba36b22eb2430007dcdf"
 }
