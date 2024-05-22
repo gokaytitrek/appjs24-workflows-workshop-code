@@ -11,7 +11,10 @@ import "../global.css";
 import "react-native-reanimated";
 import * as QuickActions from "expo-quick-actions";
 import { useQuickActionRouting, RouterAction } from "expo-quick-actions/router";
+import { registerWidgetTaskHandler } from "react-native-android-widget";
+import { widgetTaskHandler } from "@/widgets/android/widget-task-handler";
 
+registerWidgetTaskHandler(widgetTaskHandler);
 
 // component interops for nativewind - just need these once
 cssInterop(Image, { className: "style" });

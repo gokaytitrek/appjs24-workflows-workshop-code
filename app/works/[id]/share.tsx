@@ -10,7 +10,8 @@ import Marker, {
     Position,
     TextBackgroundType,
     ImageFormat,
-  } from "react-native-image-marker";
+} from "react-native-image-marker";
+import { saveLatestShare, updateWidget } from "@/widgets/common/widget-share";
 
 export default function ShareWork() {
     const dimensions = useWindowDimensions();
@@ -22,6 +23,8 @@ export default function ShareWork() {
 
     async function share() {
         if (editedImagePath) {
+            await saveLatestShare(editedImagePath);
+            await updateWidget();
             await Sharing.shareAsync(editedImagePath);
         }
     }
@@ -36,31 +39,31 @@ export default function ShareWork() {
 
         const markedImagePath = await Marker.markText({
             backgroundImage: {
-              src: image.path,
-              scale: 1,
+                src: image.path,
+                scale: 1,
             },
             watermarkTexts: [
-              {
-                text: "#cma",
-                position: {
-                  position: Position.bottomRight,
+                {
+                    text: "#cma",
+                    position: {
+                        position: Position.bottomRight,
+                    },
+                    style: {
+                        color: "#fff",
+                        fontSize: 20,
+                        textBackgroundStyle: {
+                            type: TextBackgroundType.none,
+                            color: "#000",
+                            paddingX: 16,
+                            paddingY: 6,
+                        },
+                    },
                 },
-                style: {
-                  color: "#fff",
-                  fontSize: 20,
-                  textBackgroundStyle: {
-                    type: TextBackgroundType.none,
-                    color: "#000",
-                    paddingX: 16,
-                    paddingY: 6,
-                  },
-                },
-              },
             ],
             quality: 100,
             filename: image.filename,
             saveFormat: ImageFormat.jpg,
-          });
+        });
 
         setEditedImagePath(normalizeFilePath(markedImagePath));
     }
